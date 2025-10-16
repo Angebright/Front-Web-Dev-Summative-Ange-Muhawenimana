@@ -1,9 +1,3 @@
-#  Student Finance Tracker
-
-A **comprehensive, student-friendly expense management application** built using **vanilla HTML, CSS, and JavaScript**.  
-This project demonstrates simple and mordern web development techniques including **semantic HTML**, **responsive design**, **advanced regex validation**, and **full accessibility support**.
-
-
 ## About the Project
 
 **Student Finance Tracker** is a personal finance web app designed specifically for students.  
@@ -43,61 +37,6 @@ Accessibility is a top priority. The app was designed to be **keyboard- and scre
 - Visible focus indicators and color contrast (WCAG AA compliant)
 - Full keyboard navigation support
 
-
-##  Regex Validation Library
-
-The app uses **Regular Expressions (Regex)** for form validation and intelligent search.  
-
-###  Core Validation Patterns
-
-| Validation | Regex Pattern | Purpose |
-|-------------|---------------|----------|
-| **Description** | `/^\S(?:.*\S)?$/` | Ensures no leading/trailing spaces |
-| **Amount** | `/^(0|[1-9]\d*)(\.\d{1,2})?$/` | Positive numbers, up to 2 decimals |
-| **Date** | `/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/` | Valid `YYYY-MM-DD` format |
-| **Category** | `/^[A-Za-z]+(?:[ -][A-Za-z]+)*$/` | Letters, spaces, and hyphens only |
-
-### Advanced Patterns
-
-| Pattern Name | Regex | Use Case |
-|---------------|--------|----------|
-| Duplicate Word Detection | `/\b(\w+)\s+\1\b/i` | Detects consecutive duplicate words |
-| Cents Pattern | `/\.\d{2}\b/` | Finds transactions with cents |
-| Beverage Search | `/(coffee|tea|juice)/i` | Filters beverage-related expenses |
-
----
-
-##  File Structure
-
-
-
-```
-project/
-├── index.html              # Dashboard page
-├── about.html              # About/contact page
-├── records.html            # View/manage transactions
-├── add-edit.html           # Add/edit transaction form
-├── settings.html           # App settings and data management
-├── tests.html              # Validation tests page
-├── seed.json               # Sample data (15+ records)
-├── styles/
-│   ├── main.css           # Core styles
-│   └── responsive.css     # Media queries
-├── scripts/
-│   ├── storage.js         # localStorage operations
-│   ├── state.js           # State management
-│   ├── validators.js      # Regex validation functions
-│   ├── search.js          # Regex search & highlight
-│   ├── ui.js              # UI utilities
-│   ├── dashboard.js       # Dashboard page logic
-│   ├── add-edit.js        # Form page logic
-│   ├── records.js         # Records page logic
-│   └── settings.js        # Settings page logic
-└── README.md              # This file
-```
-
-## Keyboard Navigation Map
-
 ### Global Navigation
 - `Tab` - Move forward through interactive elements
 - `Shift + Tab` - Move backward through interactive elements
@@ -136,21 +75,6 @@ project/
 - **Dynamic Content**: Sort button states communicated via `aria-pressed`
 
 - **Modal Dialogs**: Use `role="dialog"`, `aria-modal="true"`, and `aria-labelledby`
-
-### Color Contrast
-
-- Text: #0f172a on #ffffff (16.38:1)
-- Primary buttons: White text on #2563eb (8.59:1)
-- Error messages: #991b1b on #fee2e2 (7.2:1)
-- All ratios exceed WCAG AA requirements (4.5:1 for normal text)
-
-### Focus Management
-
-- Visible 2px blue focus outlines on all interactive elements
-- Focus trap in modals
-- Logical tab order throughout application
-- Skip-to-content link for keyboard users
-
 ## Running Tests
 
 1. Open `tests.html` in a browser
@@ -162,9 +86,6 @@ project/
    - Date validation (format, valid dates)
    - Category validation (allowed characters)
    - Regex compiler (valid/invalid patterns)
-
-## Setup Instructions
-
 ### Local Development
 
 1. Clone the repository:
@@ -215,8 +136,6 @@ project/
 - ✓ M5: Stats + Cap/Targets (dashboard metrics, ARIA live)
 - ✓ M6: Persistence + Import/Export (localStorage, JSON validation)
 - ✓ M7: Polish & A11y Audit (keyboard navigation, animations)
-
-## Development Notes
 
 ### Code Organization
 
