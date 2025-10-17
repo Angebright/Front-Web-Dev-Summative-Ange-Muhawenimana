@@ -1,16 +1,14 @@
 #  Student Finance Tracker
 
 A **comprehensive, student-friendly expense management application** built using **vanilla HTML, CSS, and JavaScript**.  
-This project demonstrates modern web development techniques including **semantic HTML**, **responsive design**, **advanced regex validation**, and **full accessibility support**.
+This project demonstrates simple and mordern web development techniques including **semantic HTML**, **responsive design**, **advanced regex validation**, and **full accessibility support**.
 
----
 
 ## About the Project
 
 **Student Finance Tracker** is a personal finance web app designed specifically for students.  
 It helps users **track expenses**, **manage budgets**, and **analyze spending habits** across multiple categories — all from a simple, responsive dashboard.
 
----
 
 ##  Features
 
@@ -32,7 +30,6 @@ It helps users **track expenses**, **manage budgets**, and **analyze spending ha
 - **Import/Export Data:** JSON backup and restore functionality  
 - **Responsive Design:** Mobile-first layout with multiple breakpoints  
 
----
 
 ##  Accessibility Highlights
 
@@ -46,7 +43,6 @@ Accessibility is a top priority. The app was designed to be **keyboard- and scre
 - Visible focus indicators and color contrast (WCAG AA compliant)
 - Full keyboard navigation support
 
----
 
 ##  Regex Validation Library
 
@@ -245,12 +241,14 @@ project/
 
 ## Contact
 
-- **Developer**: Ange muhawenimana
-- **Email**: email@alustudent.com
-- **GitHub**: [Your GitHub Profile]
-
-## License
-
-This project is created for educational purposes as part of a web development course.
+- Author: Ange muhawenimana
+- Email: a.muhawenim@alustudent.com
+- GitHub: Angebright
+  
+##  Submission links
 
 
+[deploying website link](https://angebright.github.io/Front-Web-Dev-Summative-Ange-Muhawenimana/) 
+
+
+[student finance tracker web application demo](https://youtu.be/UDikwO5HDHE)
