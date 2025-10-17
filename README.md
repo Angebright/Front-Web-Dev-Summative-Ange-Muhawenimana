@@ -1,10 +1,10 @@
-About the Project
+1.About the Project
 
 Student Finance Tracker is a personal finance web app designed specifically for students.  
 It helps users track expenses, manage budgets, and analyze spending habits across multiple categories and all  are from a simple, responsive dashboard.
 
 
-Features
+2.Features
 
  Core Functionality
 
@@ -27,7 +27,7 @@ Features
 
  Accessibility Highlights
 
-Accessibility is a top priority. i designed this web application to be keyboard  and screen reader-friendly, ensuring usability for everyone.
+Accessibility is a top priority. i designed this web application to be keyboard  and screen reader-friendly, ensuring usability for everyone and everywhere.
 
 - Semantic HTML5 landmarks (`header`, `main`, `nav`, etc.)
 - Proper heading hierarchy (`h1–h4`)
@@ -59,7 +59,7 @@ Records Page
 - `Enter` to activate import/export actions
 - Confirmation dialogs keyboard accessible
 
-ARIA Implementation
+3.ARIA Implementation
 
 - Live Regions:
   - Budget cap status uses `aria-live="polite"` (under budget) and `aria-live="assertive"` (over budget)
@@ -84,15 +84,9 @@ ARIA Implementation
    - Date validation (format, valid dates)
    - Category validation (allowed characters)
    - Regex compiler (valid/invalid patterns)
- Local Development
+4. Local Development
 
-1. Clone the repository:
-   ```bash
-   git clone [your-repo-url]
-   cd student-finance-tracker
-   ```
-
-2. Open `index.html` in a web browser (no build process required)
+Open `index.html` in a web browser (no build process required)
 
  Loading Seed Data
 
@@ -102,7 +96,7 @@ ARIA Implementation
 4. Click "Import JSON"
 5. Data will be loaded and page will refresh
 
-Technology Stack
+5.Technology Stack
 
 - HTML for formating and template
 - CSS such as CSS Variables, Media Queries
@@ -110,7 +104,7 @@ Technology Stack
 - localStorage which is Client-side data persistence
 - Regular Expressions such as Input validation and search
 - 
- Browser Support
+6. Browser Support
 
 - Chrome/Edge 
 - Firefox 
@@ -127,26 +121,26 @@ Technology Stack
 -  M6: Persistence + Import/Export (localStorage, JSON validation)
 -  M7: Polish & A11y Audit (keyboard navigation, animations)
 
-Code Organization
+7.Code Organization
 
 - Modular JavaScript: Each module has single responsibility
 - Separation of Concerns: State, UI, validation, storage are separate
 - No Frameworks: Pure vanilla JavaScript (no React, Bootstrap, etc.)
 - ES6 Modules: Import/export for clean dependencies
 
-Validation Strategy
+8.Validation Strategy
 
 - Real-time validation on blur
 - Clear error messages with ARIA announcements
 - Prevents invalid data entry
 - Edge cases handled (duplicate words, future dates, etc.)
 
-Security Considerations
+9.Security Considerations
 
 - Input sanitization (HTML escaping)
 - localStorage data validation on import
 
- Contact
+10. Contact
 
 - Author: Ange muhawenimana
 - Email: a.muhawenim@alustudent.com
