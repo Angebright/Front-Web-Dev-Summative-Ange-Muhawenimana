@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Application settings and data management">
+    <title>Settings - Student Finance Tracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="container">
+            <h1>Student Finance Tracker</h1>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="add-edit.html">Add Transaction</a></li>
+                    <li><a href="settings.html" aria-current="page">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="settings-section">
+            <div class="container">
+                <h2>Settings</h2>
+
+                <article class="settings-group">
+                    <h3>Currency Settings</h3>
+                    <p>Manage your preferred currency and conversion rates for multi-currency support.</p>
+
+                    <div class="form-group">
+                        <label for="base-currency">Base Currency:</label>
+                        <select id="base-currency" aria-describedby="base-currency-help">
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                        </select>
+                        <small id="base-currency-help" class="help-text">
+                            All amounts are stored in your base currency
+                        </small>
+                    </div>
+
+                    <div class="currency-rates">
+                        <h4>Conversion Rates (to base currency)</h4>
+                        <div class="form-group">
+                            <label for="rate-eur">EUR to USD:</label>
+                            <input type="number" id="rate-eur" min="0" step="0.0001" value="1.09" aria-describedby="rate-eur-help">
+                            <small id="rate-eur-help" class="help-text">1 EUR = ? USD</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="rate-gbp">GBP to USD:</label>
+                            <input type="number" id="rate-gbp" min="0" step="0.0001" value="1.27" aria-describedby="rate-gbp-help">
+                            <small id="rate-gbp-help" class="help-text">1 GBP = ? USD</small>
+                        </div>
+                        <button id="save-rates-btn" type="button" class="btn-primary">Save Rates</button>
+                    </div>
+                    <div id="currency-status" role="status" aria-live="polite" class="status-message"></div>
+                </article>
+
+                <article class="settings-group">
+                    <h3>Categories Management</h3>
+                    <p>Customize transaction categories to match your spending patterns.</p>
+
+                    <div id="categories-list" class="categories-list">
+                        <div class="category-item">
+                            <span>Food</span>
+                            <button type="button" class="btn-icon" aria-label="Delete Food category" disabled>
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="add-category">
+                        <label for="new-category">Add new category:</label>
+                        <input type="text" id="new-category" placeholder="e.g., Groceries" aria-describedby="category-help">
+                        <small id="category-help" class="help-text">Letters, spaces, and hyphens only</small>
+                        <button id="add-category-btn" type="button" class="btn-primary">Add Category</button>
+                    </div>
+                    <div id="category-status" role="status" aria-live="polite" class="status-message"></div>
+                </article>
+
+                <article class="settings-group">
+                    <h3>Data Management</h3>
+                    <p>Import, export, or reset your transaction data.</p>
+
+                    <div class="data-actions">
+                        <div class="action-item">
+                            <h4>Import Data</h4>
+                            <p>Load transactions from a JSON file.</p>
+                            <input type="file" id="import-file" accept=".json" aria-describedby="import-help">
+                            <small id="import-help" class="help-text">Select a valid JSON file with transaction records</small>
+                            <button id="import-btn" type="button" class="btn-primary">Import JSON</button>
+                        </div>
+
+                        <div class="action-item">
+                            <h4>Export Data</h4>
+                            <p>Download all your transactions as JSON.</p>
+                            <button id="export-btn" type="button" class="btn-primary">Export to JSON</button>
+                        </div>
+
+                        <div class="action-item">
+                            <h4>Clear All Data</h4>
+                            <p class="warning-text">This will permanently delete all your transactions!</p>
+                            <button id="clear-data-btn" type="button" class="btn-danger">Clear All Data</button>
+                        </div>
+                    </div>
+                    <div id="data-status" role="status" aria-live="assertive" class="status-message"></div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Student Finance Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="confirm-modal" class="modal" role="dialog" aria-labelledby="confirm-title" aria-modal="true" hidden>
+        <div class="modal-content">
+            <h3 id="confirm-title">Confirm Action</h3>
+            <p id="confirm-message"></p>
+            <div class="modal-actions">
+                <button id="confirm-yes" type="button" class="btn-danger">Yes, proceed</button>
+                <button id="confirm-no" type="button" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/settings.js"></script>
+</body>
+</html>

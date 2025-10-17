@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Add or edit transaction records">
+    <title>Add/Edit Transaction - Student Finance Tracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="container">
+            <h1>Student Finance Tracker</h1>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="add-edit.html" aria-current="page">Add Transaction</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="form-section">
+            <div class="container">
+                <h2 id="form-title">Add Transaction</h2>
+
+                <form id="transaction-form" novalidate>
+                    <div class="form-group">
+                        <label for="description">
+                            Description <span class="required" aria-label="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="description"
+                            name="description"
+                            required
+                            aria-required="true"
+                            aria-describedby="description-error description-help"
+                            placeholder="(e.g; Lunch at cafeteria)">
+                        <small id="description-help" class="help-text">
+                            No leading/trailing spaces; single spaces only
+                        </small>
+                        <div id="description-error" class="error-message" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">
+                            Amount <span class="required" aria-label="required">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="amount"
+                            name="amount"
+                            required
+                            aria-required="true"
+                            aria-describedby="amount-error amount-help"
+                            placeholder="(eg;12.50)">
+                        <small id="amount-help" class="help-text">
+                            Positive number with up to 2 decimal places
+                        </small>
+                        <div id="amount-error" class="error-message" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">
+                            Category <span class="required" aria-label="required">*</span>
+                        </label>
+                        <select
+                            id="category"
+                            name="category"
+                            required
+                            aria-required="true"
+                            aria-describedby="category-error">
+                            <option value="">Select a category</option>
+                            <option value="Food">Food</option>
+                            <option value="Books">Books</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Fees">Fees</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div id="category-error" class="error-message" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">
+                            Date <span class="required" aria-label="required">*</span>
+                        </label>
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            required
+                            aria-required="true"
+                            aria-describedby="date-error date-help">
+                        <small id="date-help" class="help-text">
+                            Format: MM/DD/YYYY
+                        </small>
+                        <div id="date-error" class="error-message" role="alert"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn" class="btn-primary">
+                            <span id="submit-text">Add Transaction</span>
+                        </button>
+                        <button type="button" id="cancel-btn" class="btn-secondary">
+                            Cancel
+                        </button>
+                    </div>
+
+                    <div id="form-status" role="status" aria-live="polite" class="status-message"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Student Finance Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/add-edit.js"></script>
+</body>
+</html>

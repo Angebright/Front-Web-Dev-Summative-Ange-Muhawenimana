@@ -1,0 +1,161 @@
+@media (min-width: 360px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cap-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cap-controls input {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    nav ul {
+        gap: calc(var(--spacing-unit) * 3);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .cap-controls {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .cap-controls input {
+        width: auto;
+        min-width: 200px;
+    }
+
+    .controls-bar {
+        flex-direction: row;
+    }
+
+    .records-table {
+        display: table;
+    }
+
+    .records-cards {
+        display: none;
+    }
+
+    .form-actions button {
+        min-width: 150px;
+    }
+
+    .data-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    .container {
+        padding: 0 calc(var(--spacing-unit) * 4);
+    }
+
+    main {
+        padding: calc(var(--spacing-unit) * 6) 0;
+    }
+
+    .chart-container {
+        min-height: 350px;
+    }
+
+    .data-actions {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .records-table-wrapper {
+        display: none;
+    }
+
+    .records-cards {
+        display: block;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .sort-controls {
+        flex-direction: column;
+    }
+
+    .sort-controls button {
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: calc(var(--spacing-unit) * 1);
+    }
+
+    nav li {
+        width: 100%;
+    }
+
+    nav a {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media print {
+    header,
+    nav,
+    footer,
+    .controls-bar,
+    .sort-controls,
+    .form-actions,
+    .action-btn,
+    button {
+        display: none;
+    }
+
+    body {
+        color: black;
+        background: white;
+    }
+
+    .stat-card,
+    .chart-section,
+    .settings-group {
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}

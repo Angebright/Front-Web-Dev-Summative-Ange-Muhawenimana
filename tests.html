@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests - Student Finance Tracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .test-results {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        .test-suite {
+            margin-bottom: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+        .test-case {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #ccc;
+            background: #f9f9f9;
+        }
+        .test-case.pass {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        .test-case.fail {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        .test-summary {
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="container">
+            <h1>Student Finance Tracker - Tests</h1>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="add-edit.html">Add Transaction</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="test-results">
+            <h2>Validation Tests</h2>
+            <div id="test-output"></div>
+            <div id="test-summary" class="test-summary"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Student Finance Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { validateDescription, validateAmount, validateDate, validateCategory } from './scripts/validators.js';
+        import { compileRegex } from './scripts/search.js';
+
+        const testOutput = document.getElementById('test-output');
+        const testSummary = document.getElementById('test-summary');
+        let passed = 0;
+        let failed = 0;
+
+        function assert(condition, testName, expected, actual) {
+            const testCase = document.createElement('div');
+            testCase.className = `test-case ${condition ? 'pass' : 'fail'}`;
+
+            if (condition) {
+                testCase.innerHTML = `<strong>✓ PASS:</strong> ${testName}`;
+                passed++;
+            } else {
+                testCase.innerHTML = `<strong>✗ FAIL:</strong> ${testName}<br>Expected: ${expected}<br>Actual: ${actual}`;
+                failed++;
+            }
+
+            return testCase;
+        }
+
+        function runTests() {
+            const suite1 = document.createElement('div');
+            suite1.className = 'test-suite';
+            suite1.innerHTML = '<h3>Description Validation Tests</h3>';
+
+            suite1.appendChild(assert(
+                validateDescription('Valid description').valid,
+                'Should accept valid description',
+                'valid',
+                'valid'
+            ));
+
+            suite1.appendChild(assert(
+                !validateDescription('  Leading space').valid,
+                'Should reject leading spaces',
+                'invalid',
+                validateDescription('  Leading space').valid ? 'valid' : 'invalid'
+            ));
+
+            suite1.appendChild(assert(
+                !validateDescription('Trailing space  ').valid,
+                'Should reject trailing spaces',
+                'invalid',
+                validateDescription('Trailing space  ').valid ? 'valid' : 'invalid'
+            ));
+
+            suite1.appendChild(assert(
+                !validateDescription('Double  space').valid,
+                'Should reject double spaces',
+                'invalid',
+                validateDescription('Double  space').valid ? 'valid' : 'invalid'
+            ));
+
+            suite1.appendChild(assert(
+                validateDescription('Single word').valid,
+                'Should accept single word',
+                'valid',
+                'valid'
+            ));
+
+            testOutput.appendChild(suite1);
+
+            const suite2 = document.createElement('div');
+            suite2.className = 'test-suite';
+            suite2.innerHTML = '<h3>Amount Validation Tests</h3>';
+
+            suite2.appendChild(assert(
+                validateAmount('12.50').valid,
+                'Should accept valid decimal amount',
+                'valid',
+                'valid'
+            ));
+
+            suite2.appendChild(assert(
+                validateAmount('100').valid,
+                'Should accept integer amount',
+                'valid',
+                'valid'
+            ));
+
+            suite2.appendChild(assert(
+                validateAmount('0.99').valid,
+                'Should accept amount less than 1',
+                'valid',
+                'valid'
+            ));
+
+            suite2.appendChild(assert(
+                !validateAmount('-10').valid,
+                'Should reject negative amount',
+                'invalid',
+                validateAmount('-10').valid ? 'valid' : 'invalid'
+            ));
+
+            suite2.appendChild(assert(
+                !validateAmount('12.999').valid,
+                'Should reject more than 2 decimals',
+                'invalid',
+                validateAmount('12.999').valid ? 'valid' : 'invalid'
+            ));
+
+            suite2.appendChild(assert(
+                !validateAmount('abc').valid,
+                'Should reject non-numeric input',
+                'invalid',
+                validateAmount('abc').valid ? 'valid' : 'invalid'
+            ));
+
+            testOutput.appendChild(suite2);
+
+            const suite3 = document.createElement('div');
+            suite3.className = 'test-suite';
+            suite3.innerHTML = '<h3>Date Validation Tests</h3>';
+
+            suite3.appendChild(assert(
+                validateDate('2025-09-29').valid,
+                'Should accept valid date',
+                'valid',
+                'valid'
+            ));
+
+            suite3.appendChild(assert(
+                !validateDate('2025-13-01').valid,
+                'Should reject invalid month',
+                'invalid',
+                validateDate('2025-13-01').valid ? 'valid' : 'invalid'
+            ));
+
+            suite3.appendChild(assert(
+                !validateDate('2025-00-15').valid,
+                'Should reject month 00',
+                'invalid',
+                validateDate('2025-00-15').valid ? 'valid' : 'invalid'
+            ));
+
+            suite3.appendChild(assert(
+                !validateDate('2025-01-32').valid,
+                'Should reject invalid day',
+                'invalid',
+                validateDate('2025-01-32').valid ? 'valid' : 'invalid'
+            ));
+
+            suite3.appendChild(assert(
+                !validateDate('25-09-29').valid,
+                'Should reject incorrect format',
+                'invalid',
+                validateDate('25-09-29').valid ? 'valid' : 'invalid'
+            ));
+
+            testOutput.appendChild(suite3);
+
+            const suite4 = document.createElement('div');
+            suite4.className = 'test-suite';
+            suite4.innerHTML = '<h3>Category Validation Tests</h3>';
+
+            suite4.appendChild(assert(
+                validateCategory('Food').valid,
+                'Should accept single word category',
+                'valid',
+                'valid'
+            ));
+
+            suite4.appendChild(assert(
+                validateCategory('Fast Food').valid,
+                'Should accept category with space',
+                'valid',
+                'valid'
+            ));
+
+            suite4.appendChild(assert(
+                validateCategory('Online-Shopping').valid,
+                'Should accept category with hyphen',
+                'valid',
+                'valid'
+            ));
+
+            suite4.appendChild(assert(
+                !validateCategory('Food123').valid,
+                'Should reject category with numbers',
+                'invalid',
+                validateCategory('Food123').valid ? 'valid' : 'invalid'
+            ));
+
+            suite4.appendChild(assert(
+                !validateCategory('Food!').valid,
+                'Should reject category with special chars',
+                'invalid',
+                validateCategory('Food!').valid ? 'valid' : 'invalid'
+            ));
+
+            testOutput.appendChild(suite4);
+
+            const suite5 = document.createElement('div');
+            suite5.className = 'test-suite';
+            suite5.innerHTML = '<h3>Regex Compiler Tests</h3>';
+
+            const validRegex = compileRegex('coffee|tea', 'i');
+            suite5.appendChild(assert(
+                validRegex !== null,
+                'Should compile valid regex pattern',
+                'RegExp object',
+                validRegex ? 'RegExp object' : 'null'
+            ));
+
+            const invalidRegex = compileRegex('[invalid', 'i');
+            suite5.appendChild(assert(
+                invalidRegex === null,
+                'Should return null for invalid regex',
+                'null',
+                invalidRegex === null ? 'null' : 'RegExp object'
+            ));
+
+            const emptyRegex = compileRegex('', 'i');
+            suite5.appendChild(assert(
+                emptyRegex === null,
+                'Should return null for empty pattern',
+                'null',
+                emptyRegex === null ? 'null' : 'RegExp object'
+            ));
+
+            testOutput.appendChild(suite5);
+
+            testSummary.innerHTML = `
+                <div>Tests Complete: ${passed + failed} total</div>
+                <div style="color: #28a745;">✓ Passed: ${passed}</div>
+                <div style="color: #dc3545;">✗ Failed: ${failed}</div>
+                <div>Success Rate: ${Math.round((passed / (passed + failed)) * 100)}%</div>
+            `;
+        }
+
+        runTests();
+    </script>
+</body>
+</html>

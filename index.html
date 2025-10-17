@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Finance Tracker - Manage your expenses effectively">
+    <title>Student Finance Tracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <div class="container">
+            <h1>Student Finance Tracker</h1>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Dashboard</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="add-edit.html">Add Transaction</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="dashboard-section">
+            <div class="container">
+                <h2>Financial Overview</h2>
+
+                <div class="stats-grid" role="region" aria-label="Financial statistics">
+                    <div class="stat-card">
+                        <h3>Total Transactions</h3>
+                        <p class="stat-value" id="total-records">0</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Total Spent</h3>
+                        <p class="stat-value" id="total-amount">$0.00</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Top Category</h3>
+                        <p class="stat-value" id="top-category">None</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Last 7 Days</h3>
+                        <p class="stat-value" id="last-7-days">$0.00</p>
+                    </div>
+                </div>
+
+                <div class="cap-section" role="region" aria-label="Budget cap tracker">
+                    <h3>Monthly Budget Amount</h3>
+                    <div class="cap-controls">
+                        <label for="budget-cap">Set monthly amount:</label>
+                        <input type="number" id="budget-cap" min="0" step="0.01" placeholder="500.00">
+                        <button id="set-cap-btn" type="button">Set amount</button>
+                    </div>
+                    <div id="cap-status" role="status" aria-live="polite" class="cap-message"></div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>Spending by Category</h3>
+                    <div id="category-chart" class="chart-container" role="img" aria-label="Bar chart showing spending by category">
+                        <p class="empty-state">No data to display</p>
+                    </div>
+                </div>
+
+                <div class="recent-section">
+                    <h3>Recent Transactions</h3>
+                    <div id="recent-transactions" role="region" aria-label="Recent transactions list">
+                        <p class="empty-state">No recent transactions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Student Finance Tracker. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/dashboard.js"></script>
+</body>
+</html>
